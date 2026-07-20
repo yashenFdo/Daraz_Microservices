@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true
+
+cloud:
+  gateway:
+    routes:
+      - id: user-service
+        uri: lb://user-service
+        predicates:
+          - Path=/api/v1/auth/**, /api/v1/customers/**
+
+      - id: catalog-service
+        uri: lb://catalog-service
+        predicates:
+          - Path=/api/v1/products/**, /api/v1/categories/**
+
+      - id: cart-service
+        uri: lb://cart-service
+        predicates:
+          - Path=/api/v1/carts/**
+
+      - id: wishlist-service
+        uri: lb://wishlist-service
+        predicates:
+          - Path=/api/v1/wishlists/**
+
+application:
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET:bXktc3VwZXItc2VjcmV0LWtleS1mb3ItZGFyYXotZS1jb21tZXJjZS0yMDI1}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,gateway

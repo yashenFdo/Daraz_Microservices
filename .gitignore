@@ -1,0 +1,61 @@
+# ================================
+# Java / Maven
+# ================================
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+.mvn/wrapper/maven-wrapper.jar
+
+# ================================
+# IDE – IntelliJ IDEA
+# ================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# ================================
+# IDE – Eclipse / STS
+# ================================
+.classpath
+.project
+.settings/
+.factorypath
+
+# ================================
+# IDE – VS Code
+# ================================
+.vscode/
+
+# ================================
+# OS artefacts
+# ================================
+.DS_Store
+Thumbs.db
+
+# ================================
+# Spring Boot
+# ================================
+*.log
+logs/
+spring.log
+
+# ================================
+# Docker
+# ================================
+docker-compose.override.yml
+
+# ================================
+# Environment / secrets
+# ================================
+.env.local
+.env.production
+*.pem
+*.key
+*.crt
